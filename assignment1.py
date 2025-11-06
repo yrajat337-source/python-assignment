@@ -15,3 +15,8 @@ print(f"Addition: {num1} + {num2} = {addition}")
 print(f"Subtraction: {num1} - {num2} = {subtraction}")
 print(f"Multiplication: {num1} * {num2} = {multiplication}")
 print(f"Division: {num1} / {num2} = {division}")
+first_name = input("Enter your first name: ")
+last_name = input("Enter your last name: ")
+full_name = first_name + " " + last_name
+print("Hello, " + full_name + "! Welcome!")
+
