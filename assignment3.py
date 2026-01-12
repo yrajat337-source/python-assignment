@@ -18,3 +18,4 @@ print("Square root of", num, "is:", sqrt_value)
 print("Natural logarithm of", num, "is:", log_value)
 print("Sine of", num, "is:", sine_value)
 
+
