@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+            <h1>User Registration</h1>
+            <p class="subtitle">Create your account</p>
+            
+            {% if errors %}
+            <div class="error-box">
+                <h3>Please fix the following errors:</h3>
+                <ul>
+                    {% for error in errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            
+            <form action="/register" method="POST" id="registrationForm">
+                <!-- Username -->
+                <div class="form-group">
+                    <label for="username">Username *</label>
+                    <input type="text" id="username" name="username" 
+                           placeholder="Enter username (min 3 characters)" required>
+                    <span class="error-message" id="usernameError"></span>
+                </div>
+                
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" 
+                           placeholder="Enter your email" required>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" name="password" 
+                           placeholder="Enter password (min 6 characters)" required>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+                
+                <!-- Confirm Password -->
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password *</label>
+                    <input type="password" id="confirm_password" name="confirm_password" 
+                           placeholder="Re-enter password" required>
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+                
+                <!-- Phone -->
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" 
+                           placeholder="Enter phone number">
+                </div>
+                
+                <!-- Gender -->
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="male"> Male
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="female"> Female
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="other"> Other
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Country -->
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select id="country" name="country">
+                        <option value="">Select Country</option>
+                        <option value="Nepal">Nepal</option>
+                        <option value="India">India</option>
+                        <option value="USA">United States</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Australia">Australia</option>
+                    </select>
+                </div>
+                
+                <!-- Terms and Conditions -->
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms" required>
+                        I agree to the terms and conditions *
+                    </label>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">Register</button>
+                
+                <p class="form-footer">
+                    Already have an account? <a href="#">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

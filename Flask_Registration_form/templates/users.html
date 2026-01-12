@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="users-wrapper">
+            <h1>Registered Users</h1>
+            <p class="subtitle">Total Users: {{ users|length }}</p>
+            
+            {% if users %}
+            <div class="users-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Gender</th>
+                            <th>Country</th>
+                            <th>Registered At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.phone or 'N/A' }}</td>
+                            <td>{{ user.gender|capitalize or 'N/A' }}</td>
+                            <td>{{ user.country or 'N/A' }}</td>
+                            <td>{{ user.registered_at }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="no-users">
+                <p>No users registered yet.</p>
+            </div>
+            {% endif %}
+            
+            <div class="action-buttons">
+                <a href="/" class="btn btn-primary">Register New User</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

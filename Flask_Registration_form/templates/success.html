@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="success-wrapper">
+            <div class="success-icon">✓</div>
+            <h1>Registration Successful!</h1>
+            <p class="success-message">Welcome, {{ user.username }}!</p>
+            
+            <div class="user-details">
+                <h2>Your Registration Details:</h2>
+                <table>
+                    <tr>
+                        <td><strong>Username:</strong></td>
+                        <td>{{ user.username }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email:</strong></td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    {% if user.phone %}
+                    <tr>
+                        <td><strong>Phone:</strong></td>
+                        <td>{{ user.phone }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if user.gender %}
+                    <tr>
+                        <td><strong>Gender:</strong></td>
+                        <td>{{ user.gender|capitalize }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if user.country %}
+                    <tr>
+                        <td><strong>Country:</strong></td>
+                        <td>{{ user.country }}</td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <td><strong>Registered:</strong></td>
+                        <td>{{ user.registered_at }}</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="/" class="btn btn-primary">Register Another User</a>
+                <a href="/users" class="btn btn-secondary">View All Users</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
